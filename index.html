@@ -113,6 +113,8 @@
       border-radius: 6px;
       max-width: 600px;
       width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
       box-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
 
@@ -135,6 +137,16 @@
       display: block;
       max-width: 100%;
       border-radius: 4px;
+    }
+
+    .modal-image-fallback {
+      display: none;
+      padding: 12px;
+      border: 1px dashed #ccc;
+      border-radius: 4px;
+      color: #666;
+      background: #f7f7f7;
+      text-align: center;
     }
 
     .modal-footer {
@@ -437,6 +449,52 @@
       });
     }
 
+    function getImageCandidates(imageSrc) {
+      if (!imageSrc) return [];
+      const normalized = String(imageSrc).replace(/\\/g, "/");
+      const parts = normalized.split("/");
+      const fileName = parts[parts.length - 1];
+      const variants = [normalized];
+      const lowerName = fileName.toLowerCase();
+      const upperFirstName = fileName.charAt(0).toUpperCase() + fileName.slice(1);
+      if (lowerName !== fileName) variants.push(normalized.replace(fileName, lowerName));
+      if (upperFirstName !== fileName) variants.push(normalized.replace(fileName, upperFirstName));
+      return [...new Set(variants)];
+    }
+
+    function appendImageToModal(imageSrc) {
+      const img = document.createElement("img");
+      img.className = "modal-image";
+      img.alt = "Vraag afbeelding";
+      img.style.display = "none";
+
+      const fallback = document.createElement("div");
+      fallback.className = "modal-image-fallback";
+      fallback.textContent = "Afbeelding kon niet worden geladen.";
+
+      const candidates = getImageCandidates(imageSrc);
+      let index = 0;
+
+      const tryNextCandidate = () => {
+        if (index >= candidates.length) {
+          img.style.display = "none";
+          fallback.style.display = "block";
+          modalImages.appendChild(fallback);
+          return;
+        }
+        img.src = candidates[index];
+        index += 1;
+      };
+
+      img.addEventListener("load", () => {
+        fallback.style.display = "none";
+        img.style.display = "block";
+      });
+      img.addEventListener("error", tryNextCandidate);
+      tryNextCandidate();
+      modalImages.appendChild(img);
+    }
+
     function onTileClick(e) {
       const tile = e.currentTarget;
       if (tile.classList.contains("used")) return;
@@ -466,13 +524,7 @@
 
       modalImages.innerHTML = "";
       if (imageSources.length > 0) {
-        imageSources.forEach((imageSrc) => {
-          const img = document.createElement("img");
-          img.className = "modal-image";
-          img.alt = "Vraag afbeelding";
-          img.src = imageSrc;
-          modalImages.appendChild(img);
-        });
+        imageSources.forEach((imageSrc) => appendImageToModal(imageSrc));
         modalImages.style.display = "flex";
       } else {
         modalImages.style.display = "none";
