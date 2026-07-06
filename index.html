@@ -358,12 +358,18 @@
     function loadQuestionSetFromText(text) {
       try {
         const parsed = JSON.parse(text);
-        if (!Array.isArray(parsed)) {
-          console.error("Gelezen JSON is geen array:", parsed);
-          alert("De JSON-vragenset moet een array van categorieën zijn. Controleer of het bestand begint met [ en eindigt met ].");
+        if (Array.isArray(parsed)) {
+          applyQuestionSet(parsed);
           return;
         }
-        applyQuestionSet(parsed);
+
+        if (parsed && typeof parsed === "object" && parsed.name && parsed.questions) {
+          applyQuestionSet([parsed]);
+          return;
+        }
+
+        console.error("Gelezen JSON is geen geldige vragenset:", parsed);
+        alert("De JSON-vragenset moet een array van categorieën zijn of één categorie-object bevatten.");
       } catch (error) {
         console.error("JSON parse error:", error);
         alert("Dit is geen geldige JSON-vragenset. Controleer het formaat.");
