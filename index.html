@@ -124,10 +124,16 @@
       margin: 15px 0;
     }
 
-    .modal-image {
+    .modal-images {
       display: none;
-      max-width: 100%;
+      flex-direction: column;
+      gap: 10px;
       margin-top: 10px;
+    }
+
+    .modal-image {
+      display: block;
+      max-width: 100%;
       border-radius: 4px;
     }
 
@@ -249,7 +255,7 @@
       <h2 id="modalCategory"></h2>
       <p><strong>Punten:</strong> <span id="modalPoints"></span></p>
       <p id="modalQuestion"></p>
-      <img id="modalImage" class="modal-image" alt="Vraag afbeelding">
+      <div id="modalImages" class="modal-images"></div>
       <p id="modalAnswer" class="answer"></p>
       <div class="modal-footer">
         <button class="btn btn-show-answer" id="showAnswerBtn">Toon antwoord</button>
@@ -322,7 +328,7 @@
     const modalCategory = document.getElementById("modalCategory");
     const modalPoints = document.getElementById("modalPoints");
     const modalQuestion = document.getElementById("modalQuestion");
-    const modalImage = document.getElementById("modalImage");
+    const modalImages = document.getElementById("modalImages");
     const modalAnswer = document.getElementById("modalAnswer");
     const showAnswerBtn = document.getElementById("showAnswerBtn");
     const team1Btn = document.getElementById("team1Btn");
@@ -449,14 +455,29 @@
       modalQuestion.textContent = questionObj.q;
       modalAnswer.textContent = "Antwoord: " + questionObj.a;
       modalAnswer.style.display = "none";
-      const imageSrc = questionObj.src || questionObj.image;
-      if (imageSrc) {
-        modalImage.src = imageSrc;
-        modalImage.style.display = "block";
+
+      const imageSources = Array.isArray(questionObj.src)
+        ? questionObj.src
+        : Array.isArray(questionObj.images)
+          ? questionObj.images
+          : questionObj.src || questionObj.image
+            ? [questionObj.src || questionObj.image]
+            : [];
+
+      modalImages.innerHTML = "";
+      if (imageSources.length > 0) {
+        imageSources.forEach((imageSrc) => {
+          const img = document.createElement("img");
+          img.className = "modal-image";
+          img.alt = "Vraag afbeelding";
+          img.src = imageSrc;
+          modalImages.appendChild(img);
+        });
+        modalImages.style.display = "flex";
       } else {
-        modalImage.removeAttribute("src");
-        modalImage.style.display = "none";
+        modalImages.style.display = "none";
       }
+
       modalBackdrop.style.display = "flex";
     }
 
