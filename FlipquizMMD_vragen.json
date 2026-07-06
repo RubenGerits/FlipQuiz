@@ -1,0 +1,61 @@
+﻿[
+  {
+    "name": "Kermis",
+    "questions": {
+      "100": { "q": "Wat is de grootste kermis van Nederland?", "a": "Tilburg" },
+      "200": {
+        "q": "Welk van deze 4 is een Booster?",
+        "a": "Huss Booster",
+        "src": [
+          "AfbeeldingenQuiz/Afbeelding3.jpg",
+          "AfbeeldingenQuiz/Afbeelding4.jpg",
+          "AfbeeldingenQuiz/Afbeelding5.jpg",
+          "AfbeeldingenQuiz/Afbeelding6.jpg"
+        ]
+      },
+      "300": { "q": "Welke attractie in het grootvermaak heeft de meeste exemplaren rondgereisd in Nederland?", "a": "Autoscooter / Botsauto's" },
+      "400": { "q": "Hoe krijgen de meeste kermissen stroom aangeleverd?", "a": "Aggregaten" },
+      "500": { "q": "Van wie is de BreakDance die staat op de servaaskermis in Maastricht?", "a": "Nico Sipkema" }
+    }
+  },
+  {
+    "name": "ETUHHHHH",
+    "questions": {
+      "100": { "q": "Hoeveel driesterrenrestaurants telt Nederland?", "a": "1" },
+      "200": { "q": "Hoe heet de Belgische concurrent van McDonald's?", "a": "Quick" },
+      "300": { "q": "Uit welke stad komt de pizza zoals we hem nu kennen?", "a": "Napels" },
+      "400": { "q": "Foie Gras is een bekend begrip in de fine dining. Wat is dit eigenlijk?", "a": "Ganzenlever" },
+      "500": { "q": "In welke exclusievere vanillearoma's wordt bevergeil gebruikt, en waar in het lichaam van de bever bevindt zich dit?", "a": "Nabij de anus" }
+    }
+  },
+  {
+    "name": "Dieren",
+    "questions": {
+      "100": { "q": "Kunnen koeien een 'beste vriendin' krijgen?", "a": "Ja" },
+      "200": { "q": "Welk MMD-stafflid zou ook zo in een buidel kunnen zitten?", "a": "Joey" },
+      "300": { "q": "Welk dier legt vierkante keutels?", "a": "Wombat" },
+      "400": { "q": "Welk bekend filmdier zou op het moment dat hij de grootste van de groep is, kunnen veranderen in een vrouwtje?", "a": "Nemo" },
+      "500": { "q": "Degenkrabben worden vaak gebruikt voor hun bloed. Welke kleur heeft dit?", "a": "Blauw" }
+    }
+  },
+  {
+    "name": "Games",
+    "questions": {
+      "100": { "q": "Wie is de mascotte van Pokémon?", "a": "Pikachu" },
+      "200": { "q": "Wat is de best verkochte game aller tijden wereldwijd?", "a": "Minecraft" },
+      "300": { "q": "GTA 6 speelt zich af in Vice City. Welke stad is dit in het echt?", "a": "Miami" },
+      "400": { "q": "Waar komt het spel Tetris oorspronkelijk vandaan?", "a": "Rusland" },
+      "500": { "q": "Hoe heet de allereerste game ooit gemaakt?", "a": "Tennis for Two (1958)" }
+    }
+  },
+  {
+    "name": "Meermoerdijk Staff",
+    "questions": {
+      "100": { "q": "Hoeveel staff (JW en mods) heeft Meermoerdijk online?", "a": "6" },
+      "200": { "q": "Wat is de gezamenlijke bijnaam van Ruben en Niel?", "a": "Kiloknallers" },
+      "300": { "q": "Wat was het eerste spel dat Sofie speelde op pc?", "a": "Sims 2" },
+      "400": { "q": "Hoelang was Niel admin op de Minecraft-server?", "a": "2 jaar" },
+      "500": { "q": "Hoeveel microfoons heeft Ruben op dit moment?", "a": "7 (5x USB, 2x XLR)" }
+    }
+  }
+]
