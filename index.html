@@ -313,15 +313,16 @@
     function loadState() {
       try {
         const stored = localStorage.getItem(STORAGE_KEY);
-        if (!stored) return { team1Score: 0, team2Score: 0, tileStates: {} };
+        if (!stored) return { team1Score: 0, team2Score: 0, tileStates: {}, questionSet: [] };
         const parsed = JSON.parse(stored);
         return {
           team1Score: parsed.team1Score || 0,
           team2Score: parsed.team2Score || 0,
-          tileStates: parsed.tileStates || {}
+          tileStates: parsed.tileStates || {},
+          questionSet: parsed.questionSet || []
         };
       } catch (error) {
-        return { team1Score: 0, team2Score: 0, tileStates: {} };
+        return { team1Score: 0, team2Score: 0, tileStates: {}, questionSet: [] };
       }
     }
 
@@ -329,7 +330,8 @@
       const state = {
         team1Score,
         team2Score,
-        tileStates
+        tileStates,
+        questionSet: data
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     }
@@ -366,6 +368,7 @@
     }
 
     const savedState = loadState();
+    data = savedState.questionSet || [];
     team1Score = savedState.team1Score;
     team2Score = savedState.team2Score;
     tileStates = savedState.tileStates;
@@ -491,6 +494,7 @@
       currentTile = null;
       team1Score = 0;
       team2Score = 0;
+      data = [];
       tileStates = {};
       saveState();
       updateScoreboard();
