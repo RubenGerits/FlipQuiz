@@ -257,10 +257,7 @@
     <label for="questionSetInput">Laad vragenset (.json):</label>
     <input type="file" id="questionSetInput" accept=".json,application/json">
     <button class="btn btn-reset" id="resetBtn">Reset bord</button>
-  </div>
-
-  <div id="board" class="board"></div>
-
+      <button class="btn btn-skip" id="removeBtn" type="button">Verwijder bord</button>
   <!-- Modal -->
   <div id="modalBackdrop" class="modal-backdrop">
     <div class="modal">
@@ -296,6 +293,7 @@
     const team2Btn = document.getElementById("team2Btn");
     const skipBtn = document.getElementById("skipBtn");
     const resetBtn = document.getElementById("resetBtn");
+    const removeBtn = document.getElementById("removeBtn");
     const questionSetInput = document.getElementById("questionSetInput");
     const team1ScoreEl = document.getElementById("team1Score");
     const team2ScoreEl = document.getElementById("team2Score");
@@ -352,6 +350,7 @@
       team2Score = 0;
       tileStates = {};
       saveState();
+      questionSetInput.value = "";
       updateScoreboard();
       buildBoard();
       modalBackdrop.style.display = "none";
@@ -494,9 +493,21 @@
       currentTile = null;
       team1Score = 0;
       team2Score = 0;
-      data = [];
       tileStates = {};
       saveState();
+      updateScoreboard();
+      buildBoard();
+    }
+
+    function removeBoard() {
+      modalBackdrop.style.display = "none";
+      currentTile = null;
+      data = [];
+      team1Score = 0;
+      team2Score = 0;
+      tileStates = {};
+      localStorage.removeItem(STORAGE_KEY);
+      questionSetInput.value = "";
       updateScoreboard();
       buildBoard();
     }
@@ -523,6 +534,7 @@
     team2Btn.addEventListener("click", () => closeModal("team2"));
     skipBtn.addEventListener("click", () => closeModal(null));
     resetBtn.addEventListener("click", resetBoard);
+    removeBtn.addEventListener("click", removeBoard);
 
     questionSetInput.addEventListener("change", (event) => {
       const file = event.target.files[0];
