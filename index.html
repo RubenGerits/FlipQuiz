@@ -358,7 +358,8 @@
 
     function loadQuestionSetFromText(text) {
       try {
-        const parsed = JSON.parse(text);
+        const normalized = String(text).replace(/^\uFEFF/, "").trim();
+        const parsed = JSON.parse(normalized);
         if (Array.isArray(parsed)) {
           applyQuestionSet(parsed);
           return;
