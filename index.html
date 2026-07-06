@@ -279,59 +279,8 @@
   </div>
 
   <script>
-    // Data: 5 categorieën, per categorie vragen voor 100–500 punten
-    let data = [
-      {
-        name: "Sport",
-        questions: {
-          100: { q: "Welk sport heeft de meeste leden bij verenigingen zitten (Een sportschool is geen vereniging!)", a: "Voetbal" },
-          200: { q: "In het Centre Court in Londen wordt het enige Grand Slam Tennistoernooi op gras gehouden. Hoe heet dit toernooi?", a: "Wimbledon" },
-          300: { q: "Max Verstappen rijdt nu met nummer 3. Wie was de vorige coureur die met nummer 3 reed?", a: "Daniel Ricciardo" },
-          400: { q: "Welke sport is dit?", a: "Lacrosse", src: "AfbeeldingenQuiz/afbeelding1.jpg" },
-          500: { q: "Hoe heet het plankje waar je je je voet tegenaan zet in het Darts?", a: "Oche" }
-        }
-      },
-      {
-        name: "Echt Gezegd",
-        questions: {
-          100: { q: "'Ik hou van slapen' Wie zei dit?", a: "Sofie" },
-          200: { q: "Maak de quote af: 'Niet kaal maar...'", a: "Wel globaal, Puppy" },
-          300: { q: "Wie heeft er zoveel chickies dat het lijkt op de KFC?", a: "Manon" },
-          400: { q: "'Ik wil ieder gat gehad hebben' Wie zei dit?", a: "Ruben" },
-          500: { q: "Waar is het tijd voor volgens Ruben?", a: "Positivitijd" }
-        }
-      },
-      {
-        name: "Musicals",
-        questions: {
-          100: { q: "Welke musical vertelt het verhaal van Simba?", a: "The Lion King" },
-          200: { q: "In welke bekende musical/film zoekt een dochter naar haar vader(s)?", a: "Mamma Mia!" },
-          300: { q: "Hoe heet het station waar Paddington voor het eerst wordt gevonden door de familie Brown?", a: "Paddington Station" },
-          400: { q: "Welke musical won in 2016 de meeste Tony Awards?", a: "Hamilton" },
-          500: { q: "Wat is de langst lopende musical op Broadway?", a: "The Phantom of the Opera" }
-        }
-      },
-      {
-        name: "sorry. WÁÁR IS DIT??",
-        questions: {
-          100: { q: "Welk Nederlands monument is dit? (ff kijken wat het wordt)", a: "Rijksmuseum", src: "AfbeeldingenQuiz/afbeelding2.jpg" },
-          200: { q: "'Meermoerdijk is 'n briljante organisasie, waar almal wat daar werk regtig cool is'. Welke taal is dit?", a: "Afrikaans" },
-          300: { q: "Welk Europees land heeft geen McDonalds?", a: "Vaticaanstad" },
-          400: { q: "Hoeveel buurlanden heeft Nederland?", a: "3" },
-          500: { q: "Wat is de hoogste berg op aarde?", a: "Mauna Kea" }
-        }
-      },
-      {
-        name: "Meezingers",
-        questions: {
-          100: { q: "Snollebollekes zei ooit 'naar links, naar...'.", a: "Rechts" },
-          200: { q: "SWEEEET CAROLINEEEE …. …. …. Vul de ontbrekende woorden in.", a: "Bah bah bah" },
-          300: { q: "Wat is het meest beluisterde muziekgenre?", a: "Popmuziek" },
-          400: { q: "Voor wie heeft de hoofdpersoon in 'de vlieger' van André Hazes de brief geschreven?", a: "Z'n moeder" },
-          500: { q: "Hoeveel keer, in totaal, heeft Bohemian Rhapsody op nummer 1 in de top 2000 gestaan?", a: "22 keer" }
-        }
-      }
-    ];
+    // De app gebruikt alleen de vragenset uit een geladen JSON-bestand.
+    let data = [];
 
     const pointsValues = [100, 200, 300, 400, 500];
 
