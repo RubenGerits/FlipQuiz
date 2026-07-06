@@ -269,7 +269,7 @@
           100: { q: "Welk sport heeft de meeste leden bij verenigingen zitten (Een sportschool is geen vereniging!)", a: "Voetbal" },
           200: { q: "In het Centre Court in Londen wordt het enige Grand Slam Tennistoernooi op gras gehouden. Hoe heet dit toernooi?", a: "Wimbledon" },
           300: { q: "Max Verstappen rijdt nu met nummer 3. Wie was de vorige coureur die met nummer 3 reed?", a: "Daniel Ricciardo" },
-          400: { q: "Welke sport is dit?", a: "Lacrosse", image: "AfbeeldingenQuiz/afbeelding1.jpg" },
+          400: { q: "Welke sport is dit?", a: "Lacrosse", src: "AfbeeldingenQuiz/afbeelding1.jpg" },
           500: { q: "Hoe heet het plankje waar je je je voet tegenaan zet in het Darts?", a: "Oche" }
         }
       },
@@ -296,7 +296,7 @@
       {
         name: "sorry. WÁÁR IS DIT??",
         questions: {
-          100: { q: "Welk Nederlands monument is dit? (ff kijken wat het wordt)", a: "Rijksmuseum", image: "AfbeeldingenQuiz/afbeelding2.jpg" },
+          100: { q: "Welk Nederlands monument is dit? (ff kijken wat het wordt)", a: "Rijksmuseum", src: "AfbeeldingenQuiz/afbeelding2.jpg" },
           200: { q: "'Meermoerdijk is 'n briljante organisasie, waar almal wat daar werk regtig cool is'. Welke taal is dit?", a: "Afrikaans" },
           300: { q: "Welk Europees land heeft geen McDonalds?", a: "Vaticaanstad" },
           400: { q: "Hoeveel buurlanden heeft Nederland?", a: "3" },
@@ -449,11 +449,12 @@
       modalQuestion.textContent = questionObj.q;
       modalAnswer.textContent = "Antwoord: " + questionObj.a;
       modalAnswer.style.display = "none";
-      if (questionObj.image) {
-        modalImage.src = questionObj.image;
+      const imageSrc = questionObj.src || questionObj.image;
+      if (imageSrc) {
+        modalImage.src = imageSrc;
         modalImage.style.display = "block";
       } else {
-        modalImage.src = "";
+        modalImage.removeAttribute("src");
         modalImage.style.display = "none";
       }
       modalBackdrop.style.display = "flex";
